@@ -9,8 +9,6 @@
 import React, {Component} from 'react';
 import {Platform, Image, StyleSheet, Text, View} from 'react-native';
 import Gest from './Gest';
-import Gest1 from './Gest1';
-
 import photo from './assets/frame.png'
 
 
@@ -29,18 +27,15 @@ export default class App extends Component {
     return (
       <View style={styles.container}>
 
-       
-    <View style={this.gest}><Gest style={styles.gest}/></View>
 
-    <Image
-    source={photo}
-    style={{
-      width: 200,
-      height: 300,
-    }}
-  />
 
+<Gest style={styles.gest} />
+ 
   
+<Image
+    source={photo}
+    style={styles.photo}
+  />
       </View>
     );
   }
@@ -63,13 +58,12 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   photo: {
-    width:'100%',
-    height:100,
-    position:'absolute',
-    top:0,
-    left:0,
-    marginTop:100
+    width:'80%',
+    height:350,
   },
   gest:{
+    // position:'relative',
+    // top:200,
   }
+ 
 });

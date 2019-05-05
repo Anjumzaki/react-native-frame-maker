@@ -14,7 +14,7 @@ import photo from './assets/12.jpg'
 export default class Gest extends Component {
   render() {
     return (
-      <View style={styles.container}>
+      <View >
     <Gestures>
   <Image
     source={photo}
