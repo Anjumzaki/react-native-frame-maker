@@ -6,8 +6,8 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform, Image, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, Image, StyleSheet, Text, View } from 'react-native';
 import Gest from './Gest';
 import photo from './assets/frame.png'
 
@@ -23,19 +23,39 @@ const instructions = Platform.select({
 
 
 export default class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      containerIndex: 2,
+      gestIndex: 1
+    }
+    this.reArrangeLevels=this.reArrangeLevels.bind(this);
+  }
+  reArrangeLevels(){
+      this.setState({
+        containerIndex: 2,
+        gestIndex: 1
+      });
+  }
   render() {
     return (
       <View style={styles.container}>
 
 
 
-<Gest style={styles.gest} />
- 
-  
-<Image
-    source={photo}
-    style={styles.photo}
-  />
+        <Gest reArrangeLevels={this.reArrangeLevels} style={{ ...{ zIndex: this.state.gestIndex }, ...styles.gest }} />
+
+
+        <Image
+          onTouchStart={() => {
+            let newState = { ...this.state };
+            newState.containerIndex = -1;
+            this.setState(newState);
+
+          }}
+          source={photo}
+          style={{ ...{ zIndex: this.state.containerIndex }, ...styles.photo }}
+        />
       </View>
     );
   }
@@ -58,12 +78,12 @@ const styles = StyleSheet.create({
     marginBottom: 5,
   },
   photo: {
-    width:'80%',
-    height:350,
+    width: '80%',
+    height: 350,
   },
-  gest:{
+  gest: {
     // position:'relative',
     // top:200,
   }
- 
+
 });
