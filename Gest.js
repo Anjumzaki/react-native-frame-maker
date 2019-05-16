@@ -6,8 +6,8 @@
  * @flow
  */
 
-import React, {Component} from 'react';
-import {Platform,Image, StyleSheet, Text, View} from 'react-native';
+import React, { Component } from 'react';
+import { Platform, Image, StyleSheet, Text, View } from 'react-native';
 import Gestures from 'react-native-easy-gestures';
 import photo from './assets/12.jpg'
 
@@ -15,15 +15,19 @@ export default class Gest extends Component {
   render() {
     return (
       <View >
-    <Gestures>
-  <Image
-    source={photo}
-    style={{
-      width: 200,
-      height: 300,
-    }}
-  />
-</Gestures>
+        <Gestures
+        onEnd={(event, styles) => {
+          this.props.reArrangeLevels();
+        }}
+        >
+          <Image
+            source={photo}
+            style={{
+              width: 200,
+              height: 300,
+            }}
+          />
+        </Gestures>
       </View>
     );
   }
